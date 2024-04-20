@@ -1,0 +1,66 @@
+<div class="alert alert-success mt-2" *ngIf="_utilitiesService.alertSuccess" role="alert">
+  {{_utilitiesService.alertSuccess}}
+</div>
+
+<div class="alert alert-danger mt-2" *ngIf="_utilitiesService.alertError" role="alert">
+  {{_utilitiesService.alertError}}
+</div>
+
+<div class="text-center mt-2" *ngIf="_utilitiesService.loading">
+  <div class="spinner-grow spinner-grow-sm bg-secondary-color" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <div class="spinner-grow spinner-grow-sm bg-secondary-color" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <div class="spinner-grow spinner-grow-sm bg-secondary-color" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+
+
+
+
+<div class="text-center p-3">
+
+  <h6 *ngIf="_userService.user">Encantados de verte de nuevo {{_userService.user.username}} ahora ya
+    puedes comenzar a transmitir tu ceremonia.
+  </h6>
+
+  <h4 *ngIf="!_userService.user">Identificate o registrate para transmitir tu ceremonia</h4>
+
+  <div *ngIf="!_userService.user">
+
+    <div *ngIf="_userService.user">
+      Tenemos ususario
+    </div>
+
+
+
+
+
+
+
+    <!-- identifyModal -->
+    <div class="modal fade" id="identifyModal" tabindex="-1" aria-labelledby="identifyModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="identifyModalLabel">Identificación</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"
+              aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-center">
+            <h6>Identificate o registrate para acceder desde un mismo lugar a todos las columnas de
+              opinión.</h6>
+            <button class="btn bg-secondary-color m-2" data-bs-dismiss="modal"
+              [routerLink]="['/login']">Login</button>
+            <button class="btn bg-secondary-color m-2" data-bs-dismiss="modal"
+              [routerLink]="['/register']">Registro</button>
+            <button class="btn bg-secondary m-2" data-bs-dismiss="modal">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>

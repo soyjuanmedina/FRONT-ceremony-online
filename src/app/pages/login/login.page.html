@@ -1,0 +1,61 @@
+<div class="alert alert-success mt-2" *ngIf="_utilitiesService.alertSuccess" role="alert">
+  {{_utilitiesService.alertSuccess}}
+</div>
+
+<div class="alert alert-danger mt-2" *ngIf="_utilitiesService.alertError" role="alert">
+  {{_utilitiesService.alertError}}
+</div>
+
+<div class="text-center mt-2" *ngIf="_utilitiesService.loading">
+  <div class="spinner-grow spinner-grow-sm bg-secondary-color" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <div class="spinner-grow spinner-grow-sm bg-secondary-color" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <div class="spinner-grow spinner-grow-sm bg-secondary-color" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+<div class="container mt-2 mb-2">
+  <div class="row d-flex align-items-center justify-content-center">
+    <div class="col-md-12">
+      <div class="card formcard px-5">
+        <form [formGroup]="loginForm">
+
+          <h5>Login</h5>
+
+          <div class="form-group">
+            <label>Nombre de usuario:</label>
+            <div class="form-input"> <i class="fa-grey fa fa-envelope"></i><input type="username"
+                class="form-control" formControlName="username" />
+            </div>
+          </div>
+
+          <div class="alert alert-danger"
+            *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched"
+            role="alert">
+            El nombre de usuario es obligatorio
+          </div>
+
+
+          <div class="form-group">
+            <label>Password:</label>
+            <div class="form-input"> <i class="fa-grey fa fa-lock"></i><input type="password"
+                class="form-control" formControlName="password" />
+            </div>
+          </div>
+
+        </form>
+
+        <button class="btn btn-primary mt-2" (click)="login()"
+          [disabled]="loginForm.invalid">Login</button>
+        <div class="text-center mt-2">
+          <div>Aún no estas registrado? <button class="btn btn-xs btn-secondary m-2"
+              [routerLink]="['/register']">Registro</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
