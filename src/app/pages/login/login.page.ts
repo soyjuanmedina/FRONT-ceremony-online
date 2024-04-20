@@ -32,7 +32,6 @@ export class LoginPage implements OnInit {
   login() {
     //this._authService.login(this.loginForm.value);
     this._utilitiesService.loading = true;
-    console.log('this', this.loginForm);
     this._authService.login(this.loginForm.value).subscribe(
       data => {
         let response = data as any;
