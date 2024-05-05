@@ -39,7 +39,7 @@ export class LoginPage implements OnInit {
         this._userService.saveToken(response.accessToken);
         this._userService.saveUser(data);
         this._utilitiesService.loading = false;
-        this.router.navigate(['/']);
+        this.router.navigate(['/start']);
       },
       err => {
         console.log('err', err)

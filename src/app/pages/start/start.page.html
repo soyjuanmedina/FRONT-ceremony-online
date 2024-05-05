@@ -1,0 +1,148 @@
+<div class="container">
+
+  <div *ngIf="!showedQuestion">
+    <h6 *ngIf="_userService.user">Encantados de verte de nuevo {{_userService.user.username}}
+    </h6>
+
+    Sobre qué quiere aprender hoy?
+
+    <hr>
+    <div class="mb-5 text-end">
+      <div>Número de preguntas:
+        <span (click)="setNumberOfQuestions(2)"
+          [ngClass]="numberOfQuestions == 2 ? 'highligt' : 'hand'">2</span> -
+        <span (click)="setNumberOfQuestions(5)"
+          [ngClass]="numberOfQuestions == 5 ? 'highligt' : 'hand'">5</span> -
+        <span (click)="setNumberOfQuestions(10)"
+          [ngClass]="numberOfQuestions == 10 ? 'highligt' : 'hand'">10</span>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <button type="button" class="btn btn-primary btn-lg w-100"
+          (click)="getQuestions('BOTANIC')">Botánica</button>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-primary btn-lg w-100"
+          (click)="getQuestions('MATHS')">Matemáticas</button>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-primary btn-lg w-100"
+          (click)="getQuestions('PHYSICS')">Física</button>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-primary btn-lg w-100"
+          (click)="getQuestions('CHEMISTRY')">Química</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showedQuestion">
+
+
+    <div *ngIf="!showResume" class="row">
+      <div class="col-12">
+        <h1 class="mt-5">Estupendo, a ver cuanto sabes de {{ themeSelected | translate }}
+        </h1>
+        <p class="mt-3">
+          Vamos a hacerte x preguntas, te iremos diciendo si acierteas y fallas y el porqué, y al
+          final te diremos que tal lo has hecho
+        </p>
+      </div>
+    </div>
+
+
+    <div class="row justify-content-evenly mt-5">
+      <div *ngIf="!showResume" class="card" style="max-width: 40%;">
+        <div class="card-body">
+          <h5 class="card-title">{{showedQuestion.question}}</h5>
+          <p class="card-text">
+          <div class="form-check" *ngFor="let answer of showedQuestion.answers | randomOrder">
+
+
+            <input class="form-check-input" type="radio" [name]="answer.answer" [id]="answer.answer"
+              [value]="answer.answer" [(ngModel)]="userAnswer" [disabled]="showSolution">
+            <label class="form-check-label" [for]="answer.answer">
+              {{answer.answer}}
+            </label>
+
+
+          </div>
+          <div *ngIf="!showSolution">
+            <div class="text-end">
+              <button (click)="check()" class="btn btn-primary">
+                Comprobar
+              </button>
+            </div>
+          </div>
+          <div *ngIf="showSolution">
+            <div class="text-end">
+              <button *ngIf="indexShowedQuestion < questions.length-1" (click)="nextQuestion()"
+                class="btn btn-primary">
+                Siguiente pregunta
+              </button>
+              <button *ngIf="indexShowedQuestion == questions.length-1" (click)="finish()"
+                class="btn btn-primary">
+                Terminar
+              </button>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+      <div *ngIf="!showResume" class="card" style="max-width: 40%;">
+        <div class="card-body">
+          <div *ngIf="showSolution">
+            <div *ngIf="correctAnswer">
+              <h3 class="text-success"><i class="bi bi-check-circle-fill"></i> Correcto!!</h3>
+            </div>
+            <div *ngIf="!correctAnswer">
+              <h3 class="text-danger"><i class="bi bi-x-square-fill"></i>Incorrecto!!</h3>
+            </div>
+            <div>
+              {{showedQuestion.explanation}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="showResume">
+        <div class="text-center">
+          <h3 *ngIf="hits >= numberOfQuestions/2"> Enohorabuena, se te da bien {{ themeSelected |
+            translate }}, has obtenido {{hits}} aciertos</h3>
+          <h3 *ngIf="hits < numberOfQuestions/2 && hits >= numberOfQuestions/4"> Se puede mejorar tu
+            rendimiento en {{ themeSelected | translate }},
+            has obtenido {{hits}} aciertos</h3>
+          <h3 *ngIf="hits < numberOfQuestions/4"> Definitivamente tienes que estudiar más {{
+            themeSelected | translate }}, has
+            obtenido {{hits}} aciertos</h3>
+          <div class="d-grid gap-2">
+            <button (click)="retry()" class="btn btn-primary">
+              Volver a intentar
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+
+
+    <div class="container">
+
+    </div>
+
+
+
+
+  </div>
+
+
+</div>

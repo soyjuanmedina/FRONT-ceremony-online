@@ -13,5 +13,5 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   styleUrl: './app.component.sass'
 })
 export class AppComponent {
-  title = 'online-ceremony';
+  title = 'Culturaxya';
 }
