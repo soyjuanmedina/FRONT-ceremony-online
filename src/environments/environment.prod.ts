@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: "https://coolumns.herokuapp.com/"
+  baseUrl: "https://back-node-culturaxya.onrender.com"
 };
