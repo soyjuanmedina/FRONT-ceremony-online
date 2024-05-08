@@ -58,7 +58,7 @@ export class StartPage {
     this._questionService.getQuestions(options).subscribe(
       (data: any) => {
         console.log('data', data);
-        this.questions = data.questions;
+        this.questions = data.result;
         this._utilitiesService.alertError = '';
         this._utilitiesService.loading = false;
         this.showedQuestion = this.questions[this.indexShowedQuestion];
