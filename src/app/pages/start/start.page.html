@@ -4,10 +4,10 @@
     <h6 *ngIf="_userService.user">Encantados de verte de nuevo {{_userService.user.username}}
     </h6>
 
-    Sobre qué quiere aprender hoy?
+    ¿Sobre qué quieres aprender hoy?
 
     <hr>
-    <div class="mb-5 text-end">
+    <div class="mb-1 text-end">
       <div>Número de preguntas:
         <span (click)="setNumberOfQuestions(2)"
           [ngClass]="numberOfQuestions == 2 ? 'highligt' : 'hand'">2</span> -
@@ -21,19 +21,19 @@
 
     <div class="row">
       <div class="col">
-        <button type="button" class="btn btn-primary btn-lg w-100"
+        <button type="button" class="btn btn-primary btn-lg w-100 m-1"
           (click)="getQuestions('BOTANIC')">Botánica</button>
       </div>
       <div class="col">
-        <button type="button" class="btn btn-primary btn-lg w-100"
+        <button type="button" class="btn btn-primary btn-lg w-100 m-1"
           (click)="getQuestions('MATHS')">Matemáticas</button>
       </div>
       <div class="col">
-        <button type="button" class="btn btn-primary btn-lg w-100"
+        <button type="button" class="btn btn-primary btn-lg w-100 m-1"
           (click)="getQuestions('PHYSICS')">Física</button>
       </div>
       <div class="col">
-        <button type="button" class="btn btn-primary btn-lg w-100"
+        <button type="button" class="btn btn-primary btn-lg w-100 m-1"
           (click)="getQuestions('CHEMISTRY')">Química</button>
       </div>
     </div>
@@ -54,8 +54,9 @@
     </div>
 
 
-    <div class="row justify-content-evenly mt-5">
-      <div *ngIf="!showResume" class="card" style="max-width: 40%;">
+
+    <div class="card-group">
+      <div *ngIf="!showResume" class="card">
         <div class="card-body">
           <h5 class="card-title">{{showedQuestion.question}}</h5>
           <p class="card-text">
@@ -94,7 +95,7 @@
         </div>
       </div>
 
-      <div *ngIf="!showResume" class="card" style="max-width: 40%;">
+      <div *ngIf="!showResume" class="card">
         <div class="card-body">
           <div *ngIf="showSolution">
             <div *ngIf="correctAnswer">

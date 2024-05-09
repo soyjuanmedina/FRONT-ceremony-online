@@ -22,7 +22,7 @@ const NUMBER_OF_QUESTIONS = 2;
   imports: [CommonModule, FormsModule, RandomOrderPipe, TranslateModule],
   styleUrls: ['./start.page.scss']
 })
-export class StartPage {
+export class StartPage implements OnInit {
 
   public questions: Array<Question>;
 
@@ -40,8 +40,6 @@ export class StartPage {
   public showResume: boolean;
   public numberOfQuestions: number = 2;
   public hits: number = 0;
-
-
 
   constructor(public _utilitiesService: UtilitiesService,
     public _userService: UserService,
@@ -104,6 +102,10 @@ export class StartPage {
 
   public setNumberOfQuestions(number: number) {
     this.numberOfQuestions = number;
+  }
+
+
+  ngOnInit(): void {
   }
 
 }

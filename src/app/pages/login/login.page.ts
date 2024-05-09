@@ -30,14 +30,14 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    //this._authService.login(this.loginForm.value);
     this._utilitiesService.loading = true;
     this._authService.login(this.loginForm.value).subscribe(
       data => {
         let response = data as any;
         this._utilitiesService.alertError = '';
-        this._userService.saveToken(response.accessToken);
-        this._userService.saveUser(data);
+        console.log('response', response);
+        this._userService.saveToken(response.data.accessToken);
+        this._userService.saveUser(response.data.user);
         this._utilitiesService.loading = false;
         this.router.navigate(['/start']);
       },

@@ -1,19 +1,23 @@
 <div class="text-center p-3">
 
-  <div *ngIf="_userService.user">
+  <div *ngIf="_userService.user?.isRegistered">
     <h6>
-      Bienvenido {{_userService.user.username}} ahora
+      Bienvenido {{_userService.user?.username}} ahora
       ya puedes guardar tu progreso en Culturaxya.
     </h6>
     <button class="btn btn-primary" [routerLink]="['/start']">Continuar</button>
   </div>
 
-  <div *ngIf="!_userService.user">
+  <div *ngIf="!_userService.user?.isRegistered">
     <h4>Identificate o registrate para guardar tu progreso, pero si lo
-      prefieres puedes continuar como invitado</h4>
+      prefieres puedes continuar como {{_userService.user?.username}}</h4>
     <button class="btn btn-primary me-2" [routerLink]="['/login']">Login</button>
-    <button class="btn btn-primary" [routerLink]="['/start']">Entra como invitado</button>
+    <button class="btn btn-primary me-2" [routerLink]="['/register']">Registro</button>
+    <button class="btn btn-primary" [routerLink]="['/start']">Seguir como
+      {{_userService.user?.username}}</button>
   </div>
+  <button *ngIf="_userService.user?.isRegistered" class="btn btn-primary"
+    [routerLink]="['/start']">Continuar</button>
 
 
 

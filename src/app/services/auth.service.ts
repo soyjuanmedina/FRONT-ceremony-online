@@ -30,7 +30,7 @@ export class AuthService {
 
   logout(): void {
     delete this._userService.user;
-    sessionStorage.clear();
+    localStorage.clear();
   }
 
   register(user: User) {
