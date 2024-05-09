@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "online-ceremony": {
+    "culturaxya": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -77,10 +77,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "online-ceremony:build:production"
+              "buildTarget": "culturaxya:build:production"
             },
             "development": {
-              "buildTarget": "online-ceremony:build:development"
+              "buildTarget": "culturaxya:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -88,7 +88,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "online-ceremony:build"
+            "buildTarget": "culturaxya:build"
           }
         },
         "test": {

@@ -17,15 +17,15 @@ export class UserService {
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object, private http: HttpClient, private _utilitiesService: UtilitiesService, public router: Router) {
 
-    if (isPlatformBrowser(this.platformId) && sessionStorage.getItem('online-ceremony-user')) {
-      this.user = JSON.parse(sessionStorage.getItem('online-ceremony-user') || "");
+    if (isPlatformBrowser(this.platformId) && sessionStorage.getItem('culturaxya-user')) {
+      this.user = JSON.parse(sessionStorage.getItem('culturaxya-user') || "");
     }
   }
 
   saveUser(user: any): void {
     this.user = user;
-    window.sessionStorage.removeItem('online-ceremony-user');
-    window.sessionStorage.setItem('online-ceremony-user', JSON.stringify(user));
+    window.sessionStorage.removeItem('culturaxya-user');
+    window.sessionStorage.setItem('culturaxya-user', JSON.stringify(user));
   }
 
   confirmEmail(params: any) {
@@ -34,12 +34,12 @@ export class UserService {
   }
 
   public saveToken(token: string): void {
-    window.sessionStorage.removeItem('online-ceremony-token');
-    window.sessionStorage.setItem('online-ceremony-token', JSON.stringify(token));
+    window.sessionStorage.removeItem('culturaxya-token');
+    window.sessionStorage.setItem('culturaxya-token', JSON.stringify(token));
   }
 
   public getToken(): string | null {
-    return window.sessionStorage.getItem('online-ceremony-token');
+    return window.sessionStorage.getItem('culturaxya-token');
   }
 
 }
