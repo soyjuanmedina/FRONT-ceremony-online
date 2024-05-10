@@ -4,9 +4,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "deploy": "npm run build-for-gh-pages && npm run move-from-browser-folder",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build-for-gh-pages": "ng build --configuration=production --output-path docs",
+    "move-from-browser-folder": "robocopy docs/browser docs /MOVE /E"
   },
   "private": true,
   "dependencies": {
