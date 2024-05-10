@@ -5,7 +5,6 @@
       Bienvenido {{_userService.user?.username}} ahora
       ya puedes guardar tu progreso en Culturaxya.
     </h6>
-    <button class="btn btn-primary" [routerLink]="['/start']">Continuar</button>
   </div>
 
   <div *ngIf="!_userService.user?.isRegistered">
