@@ -10,7 +10,7 @@
     "test": "ng test",
     "build-for-gh-pages": "ng build --configuration=production --output-path docs",
     "move-from-browser-folder": "robocopy docs/browser docs /MOVE /E",
-    "add-domain": "mkdir docs\\browser\\build & echo culturaxya.com > docs\\browser\\build\\CNAME"
+    "add-domain": "echo culturaxya.com > docs\\CNAME"
   },
   "private": true,
   "dependencies": {
