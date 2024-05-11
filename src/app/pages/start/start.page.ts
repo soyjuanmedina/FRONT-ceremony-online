@@ -35,6 +35,7 @@ export class StartPage implements OnInit {
   public numberOfQuestions: number=2;
   public level: number=1;
   public hits: number=0;
+  public levelString: string='fácil'
 
   constructor (public _utilitiesService: UtilitiesService,
     public _userService: UserService,
@@ -76,6 +77,7 @@ export class StartPage implements OnInit {
     } else {
       this.correctAnswer=false;
     }
+    this.goToBottom();
   }
 
   public nextQuestion() {
@@ -102,6 +104,24 @@ export class StartPage implements OnInit {
 
   public setLevel(number: number) {
     this.level=number;
+    switch (number) {
+      case 1:
+        this.levelString='fácil';
+        break;
+      case 2:
+        this.levelString='medina';
+        break;
+      case 3:
+        this.levelString='difícul';
+        break;
+      default:
+        this.levelString='Fácil';
+        break;
+    }
+  }
+
+  goToBottom() {
+    window.scrollTo(0, document.body.scrollHeight);
   }
 
 
