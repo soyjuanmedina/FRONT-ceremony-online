@@ -17,34 +17,34 @@ export class LoginPage implements OnInit {
 
   user: User;
 
-  loginForm = new FormGroup({
+  loginForm=new FormGroup({
     username: new FormControl('', [
       Validators.required]),
     password: new FormControl('', [
       Validators.required])
   });
 
-  constructor(public _authService: AuthService, public _userService: UserService,
+  constructor (public _authService: AuthService, public _userService: UserService,
     public _utilitiesService: UtilitiesService, public router: Router) {
     this._utilitiesService.clearAlerts();
   }
 
   login() {
-    this._utilitiesService.loading = true;
+    this._utilitiesService.loading=true;
     this._authService.login(this.loginForm.value).subscribe(
       data => {
-        let response = data as any;
-        this._utilitiesService.alertError = '';
+        let response=data as any;
+        this._utilitiesService.alertError='';
         console.log('response', response);
         this._userService.saveToken(response.data.accessToken);
         this._userService.saveUser(response.data.user);
-        this._utilitiesService.loading = false;
-        this.router.navigate(['/start']);
+        this._utilitiesService.loading=false;
+        this.router.navigate(['/start'], { skipLocationChange: true });
       },
       err => {
         console.log('err', err)
-        this._utilitiesService.alertError = "Error de autenticación";
-        this._utilitiesService.loading = false;
+        this._utilitiesService.alertError="Error de autenticación";
+        this._utilitiesService.loading=false;
       }
     );
   }

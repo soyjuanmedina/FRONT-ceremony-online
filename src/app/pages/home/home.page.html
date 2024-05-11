@@ -10,9 +10,12 @@
   <div *ngIf="!_userService.user?.isRegistered">
     <h4>Identificate o registrate para guardar tu progreso, pero si lo
       prefieres puedes continuar como {{_userService.user?.username}}</h4>
-    <button class="btn btn-primary me-2" [routerLink]="['/login']">Login</button>
-    <button class="btn btn-primary me-2" [routerLink]="['/register']">Registro</button>
-    <button class="btn btn-primary" [routerLink]="['/start']">Seguir como
+    <button class="btn btn-primary  m-1" [routerLink]="['/login']"
+      [skipLocationChange]="true">Login</button>
+    <button class="btn btn-primary  m-1" [routerLink]="['/register']"
+      [skipLocationChange]="true">Registro</button>
+    <button class="btn btn-primary m-1" [routerLink]="['/start']" [skipLocationChange]="true">Seguir
+      como
       {{_userService.user?.username}}</button>
   </div>
   <button *ngIf="_userService.user?.isRegistered" class="btn btn-primary"
