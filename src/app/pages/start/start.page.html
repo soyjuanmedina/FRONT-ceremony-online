@@ -129,34 +129,28 @@
         </div>
       </div>
 
-      <div *ngIf="showResume">
-        <div class="text-center">
-          <h3 *ngIf="hits >= numberOfQuestions/2"> Enohorabuena, se te da bien {{ themeSelected |
-            translate }}, has obtenido {{hits}} aciertos</h3>
-          <h3 *ngIf="hits < numberOfQuestions/2 && hits >= numberOfQuestions/4"> Se puede mejorar tu
-            rendimiento en {{ themeSelected | translate }},
-            has obtenido {{hits}} aciertos</h3>
-          <h3 *ngIf="hits < numberOfQuestions/4"> Definitivamente tienes que estudiar más {{
-            themeSelected | translate }}, has
-            obtenido {{hits}} aciertos</h3>
-          <div class="d-grid gap-2">
-            <button (click)="retry()" class="btn btn-primary">
-              Volver a intentar
-            </button>
-          </div>
+    </div>
+
+
+
+    <div *ngIf="showResume">
+      <div class="text-center">
+        <h3 *ngIf="hits >= numberOfQuestions/2"> Enohorabuena, se te da bien {{ themeSelected |
+          translate }}, has obtenido {{hits}} aciertos</h3>
+        <h3 *ngIf="hits < numberOfQuestions/2 && hits >= numberOfQuestions/4"> Se puede mejorar tu
+          rendimiento en {{ themeSelected | translate }},
+          has obtenido {{hits}} aciertos</h3>
+        <h3 *ngIf="hits < numberOfQuestions/4"> Definitivamente tienes que estudiar más {{
+          themeSelected | translate }}, has
+          obtenido {{hits}} aciertos</h3>
+        <div class="d-grid gap-2">
+          <button (click)="retry()" class="btn btn-primary">
+            Volver a intentar
+          </button>
         </div>
       </div>
-
     </div>
 
-
-
-
-
-
-    <div class="container">
-
-    </div>
 
 
 

@@ -28,7 +28,7 @@ export class StartPage implements OnInit {
   public showedQuestion?: Question;
   public themeSelected: string='';
   public indexShowedQuestion: number=0;
-  public userAnswer: string;
+  public userAnswer?: string;
   public correctAnswer: boolean;
   public showSolution: boolean;
   public showResume: boolean;
@@ -77,6 +77,7 @@ export class StartPage implements OnInit {
     } else {
       this.correctAnswer=false;
     }
+    delete this.userAnswer;
     this.goToBottom();
   }
 
