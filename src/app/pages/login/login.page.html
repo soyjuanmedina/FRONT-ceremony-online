@@ -53,7 +53,7 @@
           [disabled]="loginForm.invalid">Login</button>
         <div class="text-center mt-2">
           <div>Aún no estas registrado? <button class="btn btn-xs btn-secondary m-2"
-              [routerLink]="['/register']">Registro</button></div>
+              [routerLink]="['/register']" [skipLocationChange]="true">Registro</button></div>
         </div>
       </div>
     </div>

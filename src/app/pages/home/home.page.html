@@ -18,8 +18,8 @@
       como
       {{_userService.user?.username}}</button>
   </div>
-  <button *ngIf="_userService.user?.isRegistered" class="btn btn-primary"
-    [routerLink]="['/start']">Continuar</button>
+  <button *ngIf="_userService.user?.isRegistered" class="btn btn-primary" [routerLink]="['/start']"
+    [skipLocationChange]="true">Continuar</button>
 
 
 
@@ -41,9 +41,9 @@
           <h6>Identificate o registrate para acceder desde un mismo lugar a todos las columnas de
             opinión.</h6>
           <button class="btn bg-secondary-color m-2" data-bs-dismiss="modal"
-            [routerLink]="['/login']">Login</button>
+            [routerLink]="['/login']" [skipLocationChange]="true">Login</button>
           <button class="btn bg-secondary-color m-2" data-bs-dismiss="modal"
-            [routerLink]="['/register']">Registro</button>
+            [routerLink]="['/register']" [skipLocationChange]="true">Registro</button>
           <button class="btn bg-secondary m-2" data-bs-dismiss="modal">Cancelar</button>
         </div>
       </div>

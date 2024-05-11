@@ -59,8 +59,8 @@
         <button class="btn btn-primary mt-2" (click)="register()"
           [disabled]="newUserForm.invalid">Registrarse</button>
         <div class="text-center mt-2">
-          <div>¿Ya estas registrado? <button class="btn btn-secondary m-2"
-              [routerLink]="['/login']">Login</button></div>
+          <div>¿Ya estas registrado? <button class="btn btn-secondary m-2" [routerLink]="['/login']"
+              [skipLocationChange]="true">Login</button></div>
         </div>
       </div>
     </div>
