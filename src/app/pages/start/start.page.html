@@ -7,17 +7,32 @@
     ¿Sobre qué quieres aprender hoy?
 
     <hr>
-    <div class="mb-1 text-end">
-      <div>Número de preguntas:
-        <span (click)="setNumberOfQuestions(2)"
-          [ngClass]="numberOfQuestions == 2 ? 'highligt' : 'hand'">2</span> -
-        <span (click)="setNumberOfQuestions(5)"
-          [ngClass]="numberOfQuestions == 5 ? 'highligt' : 'hand'">5</span> -
-        <span (click)="setNumberOfQuestions(10)"
-          [ngClass]="numberOfQuestions == 10 ? 'highligt' : 'hand'">10</span>
-      </div>
 
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div>Nivel:
+            <span (click)="setLevel(1)" [ngClass]="level == 1 ? 'highligt' : 'hand'">Fácil</span> -
+            <span (click)="setLevel(2)" [ngClass]="level == 2 ? 'highligt' : 'hand'">Medio</span> -
+            <span (click)="setLevel(3)" [ngClass]="level == 3 ? 'highligt' : 'hand'">Difícil</span>
+            -
+          </div>
+        </div>
+        <div class="col">
+          <div class="mb-1 text-end">
+            <div>Número de preguntas:
+              <span (click)="setNumberOfQuestions(2)"
+                [ngClass]="numberOfQuestions == 2 ? 'highligt' : 'hand'">2</span> -
+              <span (click)="setNumberOfQuestions(5)"
+                [ngClass]="numberOfQuestions == 5 ? 'highligt' : 'hand'">5</span> -
+              <span (click)="setNumberOfQuestions(10)"
+                [ngClass]="numberOfQuestions == 10 ? 'highligt' : 'hand'">10</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
 
     <div class="row">
       <div class="col">

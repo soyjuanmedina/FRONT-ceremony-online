@@ -13,7 +13,7 @@ import { Question } from "../../models/question";
 import { RandomOrderPipe } from '../../pipes/random-order';
 import { TranslateModule } from '@ngx-translate/core';
 
-const NUMBER_OF_QUESTIONS = 2;
+const NUMBER_OF_QUESTIONS=2;
 
 @Component({
   selector: 'start-page',
@@ -25,83 +25,83 @@ const NUMBER_OF_QUESTIONS = 2;
 export class StartPage implements OnInit {
 
   public questions: Array<Question>;
-
   public showedQuestion?: Question;
-
-  public themeSelected: string = '';
-
-  public indexShowedQuestion: number = 0;
-
+  public themeSelected: string='';
+  public indexShowedQuestion: number=0;
   public userAnswer: string;
-
   public correctAnswer: boolean;
   public showSolution: boolean;
-
   public showResume: boolean;
-  public numberOfQuestions: number = 2;
-  public hits: number = 0;
+  public numberOfQuestions: number=2;
+  public level: number=1;
+  public hits: number=0;
 
-  constructor(public _utilitiesService: UtilitiesService,
+  constructor (public _utilitiesService: UtilitiesService,
     public _userService: UserService,
     public _questionService: QuestionService) { }
 
   getQuestions(theme: string) {
-    this.themeSelected = theme;
-    this._utilitiesService.loading = true;
-    const options = {
+    this.themeSelected=theme;
+    this._utilitiesService.loading=true;
+    const options={
       params: new HttpParams()
         .append('theme', theme)
+        .append('level', this.level)
         .append('number', this.numberOfQuestions)
     };
     this._questionService.getQuestions(options).subscribe(
       (data: any) => {
         console.log('data', data);
-        this.questions = data.result;
-        this._utilitiesService.alertError = '';
-        this._utilitiesService.loading = false;
-        this.showedQuestion = this.questions[this.indexShowedQuestion];
+        this.questions=data.result;
+        this._utilitiesService.alertError='';
+        this._utilitiesService.loading=false;
+        this.showedQuestion=this.questions[this.indexShowedQuestion];
       },
       (err: any) => {
         console.log('err', err)
-        this._utilitiesService.alertError = "Error al obtener las preguntas";
-        this._utilitiesService.loading = false;
+        this._utilitiesService.alertError="Error al obtener las preguntas";
+        this._utilitiesService.loading=false;
       }
     );
   }
 
   public check() {
-    var result = this.showedQuestion?.answers.find(answer => {
-      return answer.answer == this.userAnswer;
+    var result=this.showedQuestion?.answers.find(answer => {
+      return answer.answer==this.userAnswer;
     })
-    this.showSolution = true;
+    this.showSolution=true;
     if (result?.isCorret) {
-      this.correctAnswer = true;
+      this.correctAnswer=true;
       this.hits++
     } else {
-      this.correctAnswer = false;
+      this.correctAnswer=false;
     }
   }
 
   public nextQuestion() {
-    this.showSolution = false;
+    this.showSolution=false;
     this.indexShowedQuestion++;
-    this.showedQuestion = this.questions[this.indexShowedQuestion];
+    this.showedQuestion=this.questions[this.indexShowedQuestion];
   }
 
   public finish() {
-    this.showResume = true;
-    this.showSolution = false;
+    this.showResume=true;
+    this.showSolution=false;
   }
 
   public retry() {
-    this.showResume = false;
-    this.themeSelected = '';
+    this.showResume=false;
+    this.themeSelected='';
     delete this.showedQuestion;
-    this.indexShowedQuestion = 0;
+    this.indexShowedQuestion=0;
   }
 
   public setNumberOfQuestions(number: number) {
-    this.numberOfQuestions = number;
+    this.numberOfQuestions=number;
+  }
+
+  public setLevel(number: number) {
+    this.level=number;
   }
 
 
