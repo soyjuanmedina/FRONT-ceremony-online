@@ -4,13 +4,13 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "deploy": "npm run add-domain && npm run build-for-gh-pages && npm run move-from-browser-folder",
+    "deploy": "npm run build-for-gh-pages && npm run add-domain && npm run move-from-browser-folder",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "build-for-gh-pages": "ng build --configuration=production --output-path docs",
     "move-from-browser-folder": "robocopy docs/browser docs /MOVE /E",
-    "add-domain": "echo 'culturaxya.com' > ./docs/build/CNAME"
+    "add-domain": "New-Item -Path './docs/browser/build' -ItemType Directory -Force ; echo 'culturaxya.com' > './docs/browser/build/CNAME'"
   },
   "private": true,
   "dependencies": {
