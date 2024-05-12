@@ -13,16 +13,16 @@ import { isPlatformBrowser } from '@angular/common';
 export class UserService {
 
   user?: User;
-  error: string = '';
+  error: string='';
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object, private http: HttpClient, private _utilitiesService: UtilitiesService, public router: Router) {
+  constructor (@Inject(PLATFORM_ID) private platformId: Object, private http: HttpClient, private _utilitiesService: UtilitiesService, public router: Router) {
 
     if (isPlatformBrowser(this.platformId)) {
-      if (localStorage.getItem('culturaxya-user') && localStorage.getItem('culturaxya-user') != "undefined") {
-        this.user = JSON.parse(localStorage.getItem('culturaxya-user') || "");
+      if (localStorage.getItem('culturaxya-user')&&localStorage.getItem('culturaxya-user')!="undefined") {
+        this.user=JSON.parse(localStorage.getItem('culturaxya-user')||"");
       } else {
-        this.user = {
-          username: 'usuario' + Math.floor(Math.random() * 99999)
+        this.user={
+          username: 'usuario'+Math.floor(Math.random()*99999)
         }
         this.saveUser(this.user);
       }
@@ -31,14 +31,14 @@ export class UserService {
 
   saveUser(user: User): void {
 
-    this.user = user;
+    this.user=user;
     window.localStorage.removeItem('culturaxya-user');
     window.localStorage.setItem('culturaxya-user', JSON.stringify(user));
   }
 
   confirmEmail(params: any) {
-    this._utilitiesService.loading = true;
-    return this.http.post(environment.baseUrl + 'user/confirmemail', params);
+    this._utilitiesService.loading=true;
+    return this.http.post(environment.baseUrl+'auth/user/confirm-email', params);
   }
 
   public saveToken(token: string): void {
@@ -46,11 +46,11 @@ export class UserService {
     window.localStorage.setItem('culturaxya-token', JSON.stringify(token));
   }
 
-  public getToken(): string | null {
+  public getToken(): string|null {
     return window.localStorage.getItem('culturaxya-token');
   }
 
-  public isRegisterUser(): string | null {
+  public isRegisterUser(): string|null {
     return window.localStorage.getItem('culturaxya-token');
   }
 

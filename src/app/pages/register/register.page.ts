@@ -17,7 +17,7 @@ export class RegisterPage implements OnInit {
 
   newUser: User;
 
-  newUserForm = new FormGroup({
+  newUserForm=new FormGroup({
     username: new FormControl('', [
       Validators.required]),
     email: new FormControl('', [
@@ -26,22 +26,22 @@ export class RegisterPage implements OnInit {
       Validators.required])
   });
 
-  constructor(public _authService: AuthService, public _userService: UserService,
+  constructor (public _authService: AuthService, public _userService: UserService,
     public _utilitiesService: UtilitiesService) {
     this._utilitiesService.clearAlerts();
   }
 
   register() {
     this._utilitiesService.clearAlerts();
-    this._utilitiesService.loading = true;
+    this._utilitiesService.loading=true;
     this._authService.register(this.newUserForm.value as User).subscribe(
       data => {
-        this._utilitiesService.alertSuccess = "Gracias por registrate en Culturaxya. Ya puedes acceder con tu cuenta"
-        this._utilitiesService.loading = false;
+        this._utilitiesService.alertSuccess="Gracias por registrate en Culturaxya. Hemos enviado un correo a tu dirección de mail. Por favor, confírmalo antes de loguearte"
+        this._utilitiesService.loading=false;
       },
       err => {
-        this._utilitiesService.alertError = err.error.message || "Se ha producido un error al procesar el registro. Prueba a hacerlo en unos minutos"
-        this._utilitiesService.loading = false;
+        this._utilitiesService.alertError=err.error.message||"Se ha producido un error al procesar el registro. Prueba a hacerlo en unos minutos"
+        this._utilitiesService.loading=false;
       }
     );
   }

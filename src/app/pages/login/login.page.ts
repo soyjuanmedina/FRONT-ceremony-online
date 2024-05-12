@@ -42,8 +42,11 @@ export class LoginPage implements OnInit {
         this.router.navigate(['/start'], { skipLocationChange: true });
       },
       err => {
-        console.log('err', err)
-        this._utilitiesService.alertError="Error de autenticación";
+        if (err.status==412) {
+          this._utilitiesService.alertError="Usuario inactivo, por favor confirme su dirección de mail antes de loguearse";
+        } else {
+          this._utilitiesService.alertError="Error de autenticación";
+        }
         this._utilitiesService.loading=false;
       }
     );

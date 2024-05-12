@@ -1,0 +1,25 @@
+<div class="text-center mt-2" *ngIf="_utilitiesService.loading">
+  <div class="spinner-grow spinner-grow-sm bg-secondary-color" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <div class="spinner-grow spinner-grow-sm bg-secondary-color" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <div class="spinner-grow spinner-grow-sm bg-secondary-color" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+<div class="alert alert-success" role="alert" *ngIf="confirmMailMessageSuccess">
+  {{ confirmMailMessageSuccess}}
+</div>
+
+<div class="alert alert-danger" role="alert" *ngIf="confirmMailMessageDanger">
+  {{ confirmMailMessageDanger}}
+</div>
+
+<button class="btn btn-primary  m-1" [routerLink]="['/login']"
+  [skipLocationChange]="true">Login</button>
+
+<button class="btn btn-primary  m-1" [routerLink]="['']" [skipLocationChange]="true">Volver a la
+  home</button>

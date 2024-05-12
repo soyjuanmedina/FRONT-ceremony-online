@@ -110,13 +110,13 @@ export class StartPage implements OnInit {
         this.levelString='fácil';
         break;
       case 2:
-        this.levelString='medina';
+        this.levelString='medio';
         break;
       case 3:
-        this.levelString='difícul';
+        this.levelString='difícil';
         break;
       default:
-        this.levelString='Fácil';
+        this.levelString='fácil';
         break;
     }
   }

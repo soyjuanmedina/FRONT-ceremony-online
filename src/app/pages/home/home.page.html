@@ -20,32 +20,3 @@
   </div>
   <button *ngIf="_userService.user?.isRegistered" class="btn btn-primary" [routerLink]="['/start']"
     [skipLocationChange]="true">Continuar</button>
-
-
-
-
-
-
-
-  <!-- identifyModal -->
-  <div class="modal fade" id="identifyModal" tabindex="-1" aria-labelledby="identifyModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="identifyModalLabel">Identificación</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"
-            aria-label="Close"></button>
-        </div>
-        <div class="modal-body text-center">
-          <h6>Identificate o registrate para acceder desde un mismo lugar a todos las columnas de
-            opinión.</h6>
-          <button class="btn bg-secondary-color m-2" data-bs-dismiss="modal"
-            [routerLink]="['/login']" [skipLocationChange]="true">Login</button>
-          <button class="btn bg-secondary-color m-2" data-bs-dismiss="modal"
-            [routerLink]="['/register']" [skipLocationChange]="true">Registro</button>
-          <button class="btn bg-secondary m-2" data-bs-dismiss="modal">Cancelar</button>
-        </div>
-      </div>
-    </div>
-  </div>
