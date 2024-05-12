@@ -5,12 +5,12 @@ import { UtilitiesService } from '../../services/utilities.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'confirmemail-page',
-  templateUrl: './confirmemail.page.html',
+  selector: 'confirm-email-page',
+  templateUrl: './confirm-email.page.html',
   standalone: true,
   imports: [CommonModule, RouterModule],
 })
-export class ConfirmemailPage implements OnInit {
+export class ConfirmEmailPage implements OnInit {
 
   confirmMailMessageSuccess: string;
   confirmMailMessageDanger: string;

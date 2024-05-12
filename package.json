@@ -4,13 +4,13 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "deploy": "npm run build-for-gh-pages && npm run add-domain && npm run add-domain && npm run move-from-browser-folder",
+    "deploy": "npm run build-for-gh-pages && npm run add-domain && npm run move-from-browser-folder | git pull && git add . && git commit -m 'New_front' && git push",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "build-for-gh-pages": "ng build --configuration=production --output-path docs",
-    "move-from-browser-folder": "robocopy docs/browser docs /MOVE /E",
-    "add-domain": "echo culturaxya.com > docs\\CNAME"
+    "add-domain": "echo culturaxya.com > docs\\CNAME",
+    "move-from-browser-folder": "robocopy docs/browser docs /MOVE /E"
   },
   "private": true,
   "dependencies": {
