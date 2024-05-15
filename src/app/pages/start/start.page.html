@@ -15,7 +15,6 @@
             <span (click)="setLevel(1)" [ngClass]="level == 1 ? 'highligt' : 'hand'">Fácil</span> -
             <span (click)="setLevel(2)" [ngClass]="level == 2 ? 'highligt' : 'hand'">Medio</span> -
             <span (click)="setLevel(3)" [ngClass]="level == 3 ? 'highligt' : 'hand'">Difícil</span>
-            -
           </div>
         </div>
         <div class="col">
@@ -54,12 +53,23 @@
     </div>
   </div>
 
+  <div class="alert alert-danger mt-2" *ngIf="_utilitiesService.alertError" role="alert">
+    {{_utilitiesService.alertError}}
+  </div>
+
   <div *ngIf="showedQuestion">
+
+    <div class="d-flex flex-row-reverse">
+      <button (click)="retry()" class="btn btn-primary btn-sm">
+        <i class="bi bi-arrow-clockwise" title="Reiniciar"></i>
+      </button>
+    </div>
+
 
 
     <div *ngIf="!showResume" class="row">
       <div class="col-12">
-        <h1 class="mt-5">Estupendo, a ver cuanto sabes de {{ themeSelected | translate }}
+        <h1 class="mt-1">Estupendo, a ver cuanto sabes de {{ themeSelected | translate }}
         </h1>
         <p class="mt-3">
           Vamos a hacerte <b>{{numberOfQuestions}}</b> preguntas de nivel <b>{{levelString}}</b>, te
@@ -86,7 +96,6 @@
             <label class="form-check-label" [for]="answer.answer">
               {{answer.answer}}
             </label>
-
 
           </div>
           <div *ngIf="!showSolution">
