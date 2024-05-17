@@ -59,7 +59,7 @@
 
   <div *ngIf="showedQuestion">
 
-    <div class="d-flex flex-row-reverse">
+    <div *ngIf="!showResume" class="d-flex flex-row-reverse">
       <button (click)="retry()" class="btn btn-primary btn-sm">
         <i class="bi bi-arrow-clockwise" title="Reiniciar"></i>
       </button>

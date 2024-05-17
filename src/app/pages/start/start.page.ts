@@ -54,6 +54,7 @@ export class StartPage implements OnInit {
       ( data: any ) => {
         if ( data.message == 'NOT_ENOUGH' ) {
           this._utilitiesService.alertError = 'Perdona, aún no tenemos suficientes preguntas de ese tipo, prueba otra combinación';
+          this.questions = [];
         } else {
           this.questions = data.result;
           this._utilitiesService.alertError = '';
