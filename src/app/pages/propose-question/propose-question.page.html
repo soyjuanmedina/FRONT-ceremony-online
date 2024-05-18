@@ -1,0 +1,130 @@
+@if(_utilitiesService.alertSuccess){
+<div class="alert alert-success mt-2" role="alert">
+  {{_utilitiesService.alertSuccess}}
+</div>
+}
+@if(_utilitiesService.alertError){
+<div class="alert alert-danger mt-2" role="alert">
+  {{_utilitiesService.alertError}}
+</div>
+}
+
+@if(_utilitiesService.loading){
+<div class="text-center mt-2">
+  <div class="spinner-border" role="status">
+  </div>
+</div>
+}
+
+<div class="container mt-2 mb-2">
+  <div class="row d-flex align-items-center justify-content-center">
+    <div class="col-md-12">
+      <div class="card formcard px-5">
+        <form [formGroup]="proposeQuestionForm">
+
+          <h5>Propon tú pregunta</h5>
+          <div class="row m-2">
+            <div class="col-sm">
+              <div class="form-group">
+                <label>Tema:</label>
+                <select class="form-select" formControlName="theme">
+                  <option value="BOTANIC">Botánica</option>
+                  <option value="MATHS">Matemáticas</option>
+                  <option value="PHYSICS">Física</option>
+                  <option value="CHEMISTRY">Química</option>
+                  <option value="OTHER">Otro</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm">
+                <label>Nivel:</label>
+                <select class="form-select" formControlName="level">
+                  <option value="1">Fácil</option>
+                  <option value="2">Medio</option>
+                  <option value="3">Difícil</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row m-2">
+            <div class="form-group">
+              <label>Pregunta:</label>
+              <div class="form-input"> <i class="fa-grey fa fa-envelope"></i><input type="text"
+                  class="form-control" formControlName="question" />
+              </div>
+            </div>
+          </div>
+
+          <div class="row m-2">
+            <div class="col-sm">
+              <div class="form-group">
+                <label>Respuesta correcta:</label>
+                <div class="form-input"> <i class="fa-grey fa fa-lock"></i><input type="text"
+                    class="form-control" formControlName="correctAnswer" />
+                </div>
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="form-group">
+                <label>Otra respuesta:</label>
+                <div class="form-input"> <i class="fa-grey fa fa-lock"></i><input type="text"
+                    class="form-control" formControlName="otherAnswer1" />
+                </div>
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="form-group">
+                <label>Otra respuesta:</label>
+                <div class="form-input"> <i class="fa-grey fa fa-lock"></i><input type="text"
+                    class="form-control" formControlName="otherAnswer2" />
+                </div>
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="form-group">
+                <label>Otra respuesta:</label>
+                <div class="form-input"> <i class="fa-grey fa fa-lock"></i><input type="text"
+                    class="form-control" formControlName="otherAnswer3" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row m-2">
+            <div class="form-group">
+              <label>Explicación:</label>
+              <div class="form-input">
+                <textarea class="form-control" formControlName="explanation"></textarea>
+              </div>
+            </div>
+          </div>
+        </form>
+        @if(proposeQuestionForm.invalid
+        && proposeQuestionForm.get('theme')?.touched
+        && proposeQuestionForm.get('question')?.touched
+        && proposeQuestionForm.get('correctAnswer')?.touched
+        && proposeQuestionForm.get('otherAnswer1')?.touched
+        && proposeQuestionForm.get('otherAnswer2')?.touched
+        && proposeQuestionForm.get('otherAnswer3')?.touched
+        && proposeQuestionForm.get('explanation')?.touched){
+        <div class="row m-2">
+          <div class="col-sm">
+            <div class="alert alert-danger" role="alert">
+              Todos los campos son obligatorios
+            </div>
+          </div>
+        </div>
+        }
+
+        <div class="row m-2">
+          <div class="d-grid gap-2">
+            <button class="btn btn-primary m-2" (click)="propose()"
+              [disabled]="proposeQuestionForm.invalid">Proponer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

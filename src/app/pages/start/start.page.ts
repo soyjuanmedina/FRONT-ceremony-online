@@ -107,6 +107,10 @@ export class StartPage implements OnInit {
     this.router.navigate( ['/admin'], { skipLocationChange: true } );
   }
 
+  public propose () {
+    this.router.navigate( ['/propose'], { skipLocationChange: true } );
+  }
+
   public setNumberOfQuestions ( number: number ) {
     this.numberOfQuestions = number;
   }
