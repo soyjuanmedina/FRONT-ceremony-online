@@ -39,7 +39,7 @@ export class StartPage implements OnInit {
 
   constructor ( public _utilitiesService: UtilitiesService,
     public _userService: UserService,
-    public _questionService: QuestionService ) { }
+    public _questionService: QuestionService, public router: Router ) { }
 
   getQuestions ( theme: string ) {
     this.themeSelected = theme;
@@ -101,6 +101,10 @@ export class StartPage implements OnInit {
     this.themeSelected = '';
     delete this.showedQuestion;
     this.indexShowedQuestion = 0;
+  }
+
+  public admin () {
+    this.router.navigate( ['/admin'], { skipLocationChange: true } );
   }
 
   public setNumberOfQuestions ( number: number ) {

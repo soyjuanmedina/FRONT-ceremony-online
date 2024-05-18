@@ -4,11 +4,13 @@ import { HomePage } from './pages/home/home.page';
 import { LoginPage } from './pages/login/login.page';
 import { StartPage } from './pages/start/start.page';
 import { ConfirmEmailPage } from './pages/confirm-email/confirm-email.page';
+import { AdminPage } from './pages/admin/admin.page';
 
-export const routes: Routes=[
-  { path: '', title: "Home", component: HomePage },
-  { path: 'register', title: "Registro", component: RegisterPage },
-  { path: 'login', title: "Login", component: LoginPage },
-  { path: 'start', title: "Start", component: StartPage },
+export const routes: Routes = [
+  { path: '', title: "Culturaxya", component: HomePage },
+  { path: 'admin', component: AdminPage },
+  { path: 'register', component: RegisterPage },
+  { path: 'login', component: LoginPage },
+  { path: 'start', component: StartPage },
   { path: 'confirm-email/:id', component: ConfirmEmailPage }
 ];

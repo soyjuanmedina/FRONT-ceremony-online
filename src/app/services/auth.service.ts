@@ -7,33 +7,34 @@ import { UtilitiesService } from './utilities.service';
 import { environment } from '../../environments/environment';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders( { 'Content-Type': 'application/json' } )
 };
 
-@Injectable({
+@Injectable( {
   providedIn: 'root'
-})
+} )
 export class AuthService {
 
   user: User;
 
-  constructor(private http: HttpClient, private _userService: UserService, private router: Router,
-    public _utilitiesService: UtilitiesService) { }
+  constructor ( private http: HttpClient, private _userService: UserService, private router: Router,
+    public _utilitiesService: UtilitiesService ) { }
 
   /* login(credentials): Observable<any> {
     return this.http.post(AUTH_CONTROLLER + 'login', credentials, httpOptions);
   } */
 
-  login(credentials: any) {
-    return this.http.post(environment.baseUrl + 'auth/signin', credentials, httpOptions);
+  login ( credentials: any ) {
+    return this.http.post( environment.baseUrl + 'auth/signin', credentials, httpOptions );
   }
 
-  logout(): void {
+  logout (): void {
     delete this._userService.user;
     localStorage.clear();
+    this._userService.initUser();
   }
 
-  register(user: User) {
-    return this.http.post(environment.baseUrl + 'auth/signup', user, httpOptions);
+  register ( user: User ) {
+    return this.http.post( environment.baseUrl + 'auth/signup', user, httpOptions );
   }
 }

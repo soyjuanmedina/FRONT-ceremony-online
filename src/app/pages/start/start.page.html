@@ -1,5 +1,14 @@
 <div class="container">
 
+
+  @if (_userService.user?.role === 'ADMIN'){
+  <div class="d-flex flex-row-reverse">
+    <button (click)="admin()" class="btn btn-primary btn-sm mb-1">Administrar
+      <i class="bi bi-gear-fill" title="Administrar"></i>
+    </button>
+  </div>
+  }
+
   <div *ngIf="!showedQuestion">
     <h6 *ngIf="_userService.user">Encantados de verte de nuevo {{_userService.user.username}}
     </h6>

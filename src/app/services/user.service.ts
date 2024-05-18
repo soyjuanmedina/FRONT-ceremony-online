@@ -6,52 +6,55 @@ import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { isPlatformBrowser } from '@angular/common';
 
-@Injectable({
+@Injectable( {
   providedIn: 'root'
-})
+} )
 
 export class UserService {
 
   user?: User;
-  error: string='';
+  error: string = '';
 
-  constructor (@Inject(PLATFORM_ID) private platformId: Object, private http: HttpClient, private _utilitiesService: UtilitiesService, public router: Router) {
+  constructor ( @Inject( PLATFORM_ID ) private platformId: Object, private http: HttpClient, private _utilitiesService: UtilitiesService, public router: Router ) {
 
-    if (isPlatformBrowser(this.platformId)) {
-      if (localStorage.getItem('culturaxya-user')&&localStorage.getItem('culturaxya-user')!="undefined") {
-        this.user=JSON.parse(localStorage.getItem('culturaxya-user')||"");
-      } else {
-        this.user={
-          username: 'usuario'+Math.floor(Math.random()*99999)
-        }
-        this.saveUser(this.user);
-      }
+    if ( isPlatformBrowser( this.platformId ) ) {
+      this.initUser();
     }
   }
 
-  saveUser(user: User): void {
-
-    this.user=user;
-    window.localStorage.removeItem('culturaxya-user');
-    window.localStorage.setItem('culturaxya-user', JSON.stringify(user));
+  initUser () {
+    if ( localStorage.getItem( 'culturaxya-user' ) && localStorage.getItem( 'culturaxya-user' ) != "undefined" ) {
+      this.user = JSON.parse( localStorage.getItem( 'culturaxya-user' ) || "" );
+    } else {
+      this.user = {
+        username: 'usuario' + Math.floor( Math.random() * 99999 )
+      }
+      this.saveUser( this.user );
+    }
   }
 
-  confirmEmail(params: any) {
-    this._utilitiesService.loading=true;
-    return this.http.post(environment.baseUrl+'auth/user/confirm-email', params);
+  saveUser ( user: User ): void {
+    this.user = user;
+    window.localStorage.removeItem( 'culturaxya-user' );
+    window.localStorage.setItem( 'culturaxya-user', JSON.stringify( user ) );
   }
 
-  public saveToken(token: string): void {
-    window.localStorage.removeItem('culturaxya-token');
-    window.localStorage.setItem('culturaxya-token', JSON.stringify(token));
+  confirmEmail ( params: any ) {
+    this._utilitiesService.loading = true;
+    return this.http.post( environment.baseUrl + 'auth/user/confirm-email', params );
   }
 
-  public getToken(): string|null {
-    return window.localStorage.getItem('culturaxya-token');
+  public saveToken ( token: string ): void {
+    window.localStorage.removeItem( 'culturaxya-token' );
+    window.localStorage.setItem( 'culturaxya-token', JSON.stringify( token ) );
   }
 
-  public isRegisterUser(): string|null {
-    return window.localStorage.getItem('culturaxya-token');
+  public getToken (): string | null {
+    return window.localStorage.getItem( 'culturaxya-token' );
+  }
+
+  public isRegisterUser (): string | null {
+    return window.localStorage.getItem( 'culturaxya-token' );
   }
 
 }
