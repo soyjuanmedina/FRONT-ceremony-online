@@ -2,9 +2,17 @@
   {{_utilitiesService.alertSuccess}}
 </div>
 
+@if(_utilitiesService.alertError){
 <div class="alert alert-danger mt-2" *ngIf="_utilitiesService.alertError" role="alert">
   {{_utilitiesService.alertError}}
+  @if(showResendActivationEmailButton)
+  {
+  <button class="btn btn-xs btn-secondary m-2" (click)="resendActivationEmail()">
+    Volver a enviar mail de activación
+  </button>
+  }
 </div>
+}
 
 <div class="text-center mt-2" *ngIf="_utilitiesService.loading">
   <div class="spinner-border" role="status">

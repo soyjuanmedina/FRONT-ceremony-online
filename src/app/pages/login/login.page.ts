@@ -16,6 +16,7 @@ import { CommonModule } from '@angular/common';
 export class LoginPage implements OnInit {
 
   user: User;
+  showResendActivationEmailButton: boolean = false;
 
   loginForm = new FormGroup( {
     username: new FormControl( '', [
@@ -30,11 +31,11 @@ export class LoginPage implements OnInit {
   }
 
   login () {
+    this._utilitiesService.clearAlerts();
     this._utilitiesService.loading = true;
     this._authService.login( this.loginForm.value ).subscribe(
       data => {
         let response = data as any;
-        this._utilitiesService.alertError = '';
         this._userService.saveToken( response.data.accessToken );
         this._userService.saveUser( response.data.user );
         this._utilitiesService.loading = false;
@@ -43,9 +44,27 @@ export class LoginPage implements OnInit {
       err => {
         if ( err.status == 412 ) {
           this._utilitiesService.alertError = "Usuario inactivo, por favor confirme su dirección de mail antes de loguearse";
+          this.showResendActivationEmailButton = true;
         } else {
           this._utilitiesService.alertError = "Error de autenticación";
         }
+        this._utilitiesService.loading = false;
+      }
+    );
+  }
+
+  resendActivationEmail () {
+    this._utilitiesService.clearAlerts();
+    this.showResendActivationEmailButton = false;
+    this._utilitiesService.loading = true;
+    console.log( 'resendActivationEmail', this.loginForm );
+    this._authService.resendActivationEmail( this.loginForm.value ).subscribe(
+      data => {
+        this._utilitiesService.alertSuccess = "Se ha enviado de nuevo el mail de activación, por favor revisa tu correo para confirmarlo";
+        this._utilitiesService.loading = false;
+      },
+      err => {
+        this._utilitiesService.alertError = "No se ha podido enviar el correo";
         this._utilitiesService.loading = false;
       }
     );

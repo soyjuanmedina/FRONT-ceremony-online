@@ -37,4 +37,8 @@ export class AuthService {
   register ( user: User ) {
     return this.http.post( environment.baseUrl + 'auth/signup', user, httpOptions );
   }
+
+  resendActivationEmail ( credentials: any ) {
+    return this.http.post( environment.baseUrl + 'auth/resend-activation-email', credentials, httpOptions );
+  }
 }
